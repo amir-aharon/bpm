@@ -60,10 +60,7 @@ func startServer(port string) {
 	mux.HandleFunc("/download/", handleDownload)
 
 	addr := ":" + port
-	if h, err := os.Hostname(); err == nil {
-		fmt.Printf("Web UI listening on http://%s%s\n", h, addr)
-	}
-	fmt.Printf("Web UI listening on http://0.0.0.0%s\n", addr)
+	fmt.Printf("Web UI listening on http://localhost%s\n", addr)
 	if err := http.ListenAndServe(addr, mux); err != nil {
 		fmt.Fprintf(os.Stderr, "server error: %v\n", err)
 		os.Exit(1)
